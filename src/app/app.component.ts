@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,27 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit{
-  title = 'Ecommerce_ASP_client_Angular';
-  baseUrl="";
-  products : [] = [];
-
-
-  /**
-   *
-   */
-  constructor(private http:HttpClient) {
+  title="ECom";
+  constructor() {
     
   }
 
-  getProduct(){
-    return this.http.get(this.baseUrl).subscribe(
-      (values:any)=>{
-        this.products=values;
-      }
-    )
-  }
-
   ngOnInit(): void {
-    this.getProduct();
   }
 }
