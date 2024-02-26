@@ -1,0 +1,17 @@
+<div class="card h-100 shadow-sm">
+    <img src="{{product.productPicture}}" alt="{{product.name}}" class="mt-3">
+
+    <div class="card-body">
+        <a href="">
+            <p class="text-uppercase">{{product.name}}</p>
+        </a>
+        <span>{{product.price | currency}}</span>
+
+        <div class="">
+            <div class="btn-group mt-2">
+                <button type="button" class="btn btn-sm btn-outline-danger fa fa-shopping-cart"></button>
+                <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
