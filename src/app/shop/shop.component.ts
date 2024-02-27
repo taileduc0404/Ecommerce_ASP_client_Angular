@@ -10,28 +10,40 @@ import { ICategory } from '../shared/Models/Categories';
 })
 export class ShopComponent implements OnInit {
 
-  products:IProducts[];
-  categories:ICategory[];
+  products: IProducts[];
+  categories: ICategory[];
 
-  categoryIdSelected:number=0;
+  categoryIdSelected: number = 0;
+  sortSelect: string = 'Name';
+  sortOptions = [
+    { name: 'Name', value: 'Name' },
+    { name: 'Price: Max - Min', value: 'PriceDesc' },
+    { name: 'Price: Min - Max', value: 'PriceAsync' },
+  ]
 
-  constructor(private shopService:ShopService) { }
+  constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
   }
 
-  getProducts(){
-    this.shopService.getProduct().subscribe(res => {
-      this.products=res.data;
+  getProducts() {
+    this.shopService.getProduct(this.categoryIdSelected, this.sortSelect).subscribe(res => {
+      this.products = res.data;
     })
   }
 
-  getCategories(){
+  getCategories() {
     this.shopService.getCategory().subscribe(res => {
-      this.categories=res;
+      this.categories = res;
     })
+  }
+
+  onSortSelect(sort: Event) {
+    let sortValue = (sort.target as HTMLInputElement).value;
+    this.sortSelect=sortValue;
+    this.getProducts();
   }
 
 }

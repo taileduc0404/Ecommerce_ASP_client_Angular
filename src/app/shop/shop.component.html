@@ -3,11 +3,8 @@
     <section class="col-3">
 
       <h6 class="text-danger my-3" style="font-weight: bold;">Sorting</h6>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>--</option>
-        <option value="1">Name</option>
-        <option value="2">Price: Max - Min</option>
-        <option value="3">Price: Min - Max</option>
+      <select class="form-select" aria-label="Default select example" (change)="onSortSelect($event)">
+        <option *ngFor="let item of sortOptions" [value]="item.value">{{item.name}}</option>
       </select>
 
       <h6 class="text-danger mt-4" style="font-weight: bold;">Categories</h6>
@@ -34,10 +31,12 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let item of products">
           <app-shop-item [product]="item"></app-shop-item>
-
         </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <pagination previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
 
-
+        </pagination>
       </div>
     </section>
   </div>
